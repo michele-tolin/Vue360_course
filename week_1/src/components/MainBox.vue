@@ -21,10 +21,7 @@
                 'font-bold text-red-700': !canSubmit()
               }"
             >
-              {{ countCharacters() }} character
-              <span v-if="Math.abs(countCharacters()) > 1" >
-                s
-              </span> left
+              {{ countCharacters() }} character<span v-if="Math.abs(countCharacters()) > 1" >s</span> left
             </div>
             <button
               class="px-3 py-2 ml-3 border rounded bg-blue-600 text-blue-100 border-blue-800 hover:bg-blue-900 hover:text-gray-200"
@@ -72,6 +69,14 @@ export default {
       messageList: []
     };
   },
+
+  /*watch: {
+      messageToSubmit() {
+          if(this.messageToSubmit.length>10) {
+              this.messageToSubmit = this.messageToSubmit.substring(0,10);
+          }
+      }
+  },*/
 
   methods: {
     countCharacters() {
