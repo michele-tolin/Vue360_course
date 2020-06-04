@@ -12,8 +12,8 @@
       </div>
       <div @click="goToFull">{{ prdData.desc }} <svg class="inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm0-9a1 1 0 0 1 1 1v4a1 1 0 0 1-2 0v-4a1 1 0 0 1 1-1zm0-4a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg></div>
       <div>$ {{ prdData.price }}</div>
-      <div>rating: {{ avgRate }}</div>
-      <div>available: {{ prdData.availability }}</div>
+      <div>Avg rating: {{ avgRate }} <font-awesome-icon v-for="n in avgRate" icon="star" :key="n"></font-awesome-icon></div>
+      <div>Available: {{ prdData.availability }}</div>
     </div>
     <div class="w-32 text-right">
       <button
@@ -56,7 +56,7 @@ export default {
       var tmp = 0;
       if (this.prdData.rateList.length) {
         for (var idx = 0; idx < this.prdData.rateList.length; idx++) {
-          tmp += this.prdData.rateList[idx];
+          tmp += this.prdData.rateList[idx].val;
         }
         tmp = Math.round(tmp / this.prdData.rateList.length);
       }

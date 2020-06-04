@@ -8,7 +8,7 @@
     ></div>
     <div class="flex-1 py-3 px-6 text-left">
       <div class="text-2xl">{{ prdData.name }}</div>
-      <div>Quantity: {{ prdData.qty }}</div>
+      <div>Quantity: {{ prdData.qty }} <font-awesome-icon v-for="n in avgRate" icon="star" :key="n"></font-awesome-icon></div>
     </div>
     <div class="p-3 text-xl">$ {{ prdData.price * prdData.qty }}</div>
   </div>
@@ -37,7 +37,7 @@ export default {
       var tmp = 0;
       if (this.prdData.rateList.length) {
         for (var idx = 0; idx < this.prdData.rateList.length; idx++) {
-          tmp += this.prdData.rateList[idx];
+          tmp += this.prdData.rateList[idx].val;
         }
         tmp = Math.round(tmp / this.prdData.rateList.length);
       }

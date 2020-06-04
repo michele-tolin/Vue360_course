@@ -38,7 +38,13 @@ export default {
           desc: "Great full camera for great experiences",
           cat: "Camera",
           price: 500,
-          rateList: [5, 4, 5, 3, 3],
+          rateList: [
+              {val:5, author:'mike', date: '2020-05-05'},
+              {val:4, author:'mike', date: '2020-05-05'},
+              {val:5, author:'mike', date: '2020-05-05'},
+              {val:3, author:'mike', date: '2020-05-05'},
+              {val:3, author:'mike', date: '2020-05-05'}
+          ],
           availability: 4
         },
         {
@@ -49,7 +55,10 @@ export default {
           desc: "Intermediate camera level, the best for the best price",
           cat: "Camera",
           price: 150,
-          rateList: [3, 3],
+          rateList: [
+              {val:3, author:'mike', date: '2020-05-05'},
+              {val:3, author:'mike', date: '2020-05-05'}
+          ],
           availability: 0
         },
         {
@@ -60,7 +69,13 @@ export default {
           desc: "Great for portraits",
           cat: "Objectives",
           price: 640,
-          rateList: [3, 4, 5, 3, 3],
+          rateList: [
+              {val:3, author:'mike', date: '2020-05-05'},
+              {val:4, author:'mike', date: '2020-05-05'},
+              {val:5, author:'mike', date: '2020-05-05'},
+              {val:3, author:'mike', date: '2020-05-05'},
+              {val:3, author:'mike', date: '2020-05-05'}
+          ],
           availability: 2
         },
         {
@@ -71,7 +86,13 @@ export default {
           desc: "From details to portrait",
           cat: "Objectives",
           price: 350,
-          rateList: [2, 2, 2, 3, 3],
+          rateList: [
+              {val:2, author:'mike', date: '2020-05-05'},
+              {val:2, author:'mike', date: '2020-05-05'},
+              {val:2, author:'mike', date: '2020-05-05'},
+              {val:3, author:'mike', date: '2020-05-05'},
+              {val:3, author:'mike', date: '2020-05-05'}
+          ],
           availability: 1
         },
         {
@@ -82,7 +103,12 @@ export default {
           desc: "The best companion for your travels",
           cat: "Accessories",
           price: 300,
-          rateList: [5, 5, 4, 3],
+          rateList: [
+              {val:5, author:'mike', date: '2020-05-05'},
+              {val:5, author:'mike', date: '2020-05-05'},
+              {val:4, author:'mike', date: '2020-05-05'},
+              {val:3, author:'mike', date: '2020-05-05'}
+          ],
           availability: 3
         },
         {
