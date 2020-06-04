@@ -1,18 +1,24 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    What are you interested of?
+    <Types :categoryList="categories"></Types>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import Types from "@/components/Types.vue";
 
 export default {
   name: "Home",
+  props: {
+    categories: {
+      type: Array,
+      default: () => []
+    }
+  },
   components: {
-    HelloWorld
+    Types
   }
 };
 </script>
