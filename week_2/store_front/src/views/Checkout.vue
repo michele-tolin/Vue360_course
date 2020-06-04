@@ -7,7 +7,7 @@
       <h1>
         This is the check out page where all your basket products are listed
       </h1>
-      <!-- To ask to Erik... why if i use the keep-alive then the v-for stops at first one?
+      <!-- //todo To ask to Erik... why if i use the keep-alive then the v-for stops at first one?
       <keep-alive>
         <component :is="'lineProduct'"
                    v-for="prd in filteredList"

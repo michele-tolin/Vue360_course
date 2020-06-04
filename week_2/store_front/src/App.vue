@@ -216,7 +216,7 @@ export default {
     }
   }
 
-  /*
+  /* todo
   not reactive... ask Erik....
   computed: {
     totItems: function() {
