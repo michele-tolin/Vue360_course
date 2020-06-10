@@ -78,10 +78,10 @@ export default {
     },
 
     checkToContinue() {
-      console.log("if right goes to next step...");
+      //console.log("if right goes to next step...");
 
       this.resetState();
-      console.log(this.isFinshed);
+      //console.log(this.isFinshed);
       if (this.isFinshed) {
         this.$router.push({ name: "HallOfFame" });
       } else {
