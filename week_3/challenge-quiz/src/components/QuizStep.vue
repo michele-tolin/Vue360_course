@@ -17,7 +17,7 @@
           }"
                 @click="checkAnswer(idx)"
               >
-                <Answer>
+                <Answer @click.native="checkAnswer(idx)">
                   <div v-html="answer"></div>
                 </Answer>
               </div>
