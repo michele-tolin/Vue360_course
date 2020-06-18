@@ -2,7 +2,7 @@
   <div class="shadow relative" v-if="isLogged">
     <Menu ref="menu" class="absolute" @logout="doLogout" />
 
-    <div class="flex w-full justify-between p-3">
+    <div class="flex w-full justify-between items-center p-3">
       <button
         class="text-gray-500 bg-transparent border border-solid border-gray-500 hover:bg-gray-500 hover:text-white active:bg-gray-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1"
         type="button"
