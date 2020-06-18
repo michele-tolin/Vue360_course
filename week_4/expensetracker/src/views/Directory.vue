@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="height: calc(100vh - 64px);" class="overflow-y-auto">
     <div
       class="mx-auto w-full sm:w-4/5 md:w-3/5 xl:w-2/5 xxl: w-1/5 overflow-x-hidden"
     >
