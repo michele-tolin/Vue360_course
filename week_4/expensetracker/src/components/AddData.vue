@@ -5,7 +5,9 @@
       v-show="showAdd"
       class="fixed h-full w-full flex items-center justify-center bg-gray-900  rounded top-0"
     >
-      <div class="p-6 bg-gray-200 flex flex-col shadow w-1/2">
+      <div
+        class="p-6 bg-gray-200 flex flex-col shadow w-full sm:w-4/5 md:w-3/5 xl:w-2/5 xxl: w-1/5 overflow-x-hidden"
+      >
         <label class="pt-3 text-left" for="cat">Category</label>
         <input
           class="py-2 px-3 shadow"
