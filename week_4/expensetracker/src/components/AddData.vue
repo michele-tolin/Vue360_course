@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute bottom-0">
+  <div class="fixed bottom-0">
     <CustomButton @click.native="showAdd = true">Expense</CustomButton>
     <div
       v-show="showAdd"
