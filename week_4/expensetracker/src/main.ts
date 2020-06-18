@@ -1,4 +1,5 @@
 import Vue from "vue";
+import "./plugins/fontawesome";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
@@ -21,20 +22,20 @@ const firebaseConfig = {
   projectId: "xpence-vue",
   storageBucket: "xpence-vue.appspot.com",
   messagingSenderId: "1001066676608",
-  appId: "1:1001066676608:web:7e2b56962002e8d767c165"
+  appId: "1:1001066676608:web:7e2b56962002e8d767c165",
 };
 
 firebase.initializeApp(firebaseConfig);
 
 let app: Vue;
 
-firebase.auth().onAuthStateChanged(user => {
-  console.log("user", user);
+firebase.auth().onAuthStateChanged((user) => {
+  //console.log("user", user);
   if (!app) {
     app = new Vue({
       router,
       store,
-      render: h => h(App)
+      render: (h) => h(App),
     }).$mount("#app");
   }
 });

@@ -10,12 +10,12 @@ const routes: Array<RouteConfig> = [
   {
     path: "/",
     name: "Home",
-    component: Home
+    component: Home,
   },
   {
     path: "/directory",
     name: "Directory",
-    meta: { requiresAuth: true }, /* this grant for subroutes */
+    meta: { requiresAuth: true } /* this grant for subroutes */,
     component: () =>
       import(/* webpackChunkName: "directory" */ "../views/Directory.vue"),
     children: [
@@ -23,15 +23,15 @@ const routes: Array<RouteConfig> = [
         path: "dashboard",
         name: "Dashboard",
         component: () =>
-          import(/* webpackChunkName: "dashboard" */ "../views/Dashboard.vue")
+          import(/* webpackChunkName: "dashboard" */ "../views/Dashboard.vue"),
       },
       {
         path: "details",
         name: "Details",
         component: () =>
-          import(/* webpackChunkName: "details" */ "../views/Details.vue")
-      }
-    ]
+          import(/* webpackChunkName: "details" */ "../views/Details.vue"),
+      },
+    ],
   },
   {
     path: "/about",
@@ -40,26 +40,27 @@ const routes: Array<RouteConfig> = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
-  }
+      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+  },
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
+  routes,
 });
 
 export default router;
 
-
 // Adding a guard for routes that needs authentication
 router.beforeEach((to, from, next) => {
-  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+  const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
   const isAuthenticated = firebase.auth().currentUser;
-  console.log("isauthenticated", isAuthenticated);
+  //console.log("isauthenticated", isAuthenticated);
   if (requiresAuth && !isAuthenticated) {
     next("/");
+  } else if (isAuthenticated && to.name === "Home") {
+    next("/directory/dashboard");
   } else {
     next();
   }

@@ -1,58 +1,100 @@
 <template>
   <div class="absolute bottom-0">
-    <div class="relative">plus</div>
-    <div>
-      <ul>
-        <li @click="showAdd= true">Expense</li>
-      </ul>
-    </div>
+    <CustomButton @click.native="showAdd = true">Expense</CustomButton>
     <div
       v-show="showAdd"
-      class="fixed h-full w-full flex items-center justify-center bg-gray-600 opacity-75 rounded top-0"
+      class="fixed h-full w-full flex items-center justify-center bg-gray-900  rounded top-0"
     >
-      <div class="p-6 bg-gray-200 flex flex-col shadow">
-        <label for="cat">cat</label>
-        <input type="text" name="cat" v-model="item.cat" />
-        <label for="euro">euro</label>
-        <input type="text" name="euro" v-model="item.euro" />
-        <label for="item">item</label>
-        <input type="text" name="item" v-model="item.item" />
-        <button @click="addItem">Add</button>
+      <div class="p-6 bg-gray-200 flex flex-col shadow w-1/2">
+        <label class="pt-3 text-left" for="cat">Category</label>
+        <input
+          class="py-2 px-3 shadow"
+          type="text"
+          name="cat"
+          v-model="item.cat"
+        />
+        <label class="pt-3 text-left" for="euro">euro</label>
+        <input
+          class="py-2 px-3 shadow"
+          type="text"
+          name="euro"
+          v-model="item.euro"
+        />
+        <label class="pt-3 text-left" for="item">item</label>
+        <input
+          class="py-2 px-3 shadow"
+          type="text"
+          name="item"
+          v-model="item.item"
+        />
+
+        <ErrorInline v-if="showAlert" @dismiss="showAlert = false">
+          Error! fields are mandatory...
+        </ErrorInline>
+
+        <div class="mt-3 flex justify-end">
+          <CustomButton @click.native="addItem">Add</CustomButton>
+          <CustomButton @click.native="showAdd = false" :type="'secondary'"
+            >Cancel</CustomButton
+          >
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script lang="ts">
-import Vue from "vue";
-import * as firebase from "firebase/app";
-import "firebase/firestore";
+  import Vue from "vue";
+  import * as firebase from "firebase/app";
+  import "firebase/firestore";
 
-export default Vue.extend({
-  data() {
-    return {
-      item: {
-        cat: "" as string,
-        euro: 0.0 as number,
-        item: "" as string
-      } as object,
-      showAdd: false as boolean
-    };
-  },
-  methods: {
-    addItem() {
-      const db = firebase.firestore();
+  import CustomButton from "@/components/CustomButton.vue";
+  import ErrorInline from "@/components/ErrorInline.vue";
 
-      const collection = db.collection("spese");
-
-      collection.add({
-        category: this.item.cat,
-        euro: this.item.euro,
-        item: this.item.item,
-        data: firebase.firestore.Timestamp.fromDate(new Date())
-      });
-
-      this.showAdd = false;
-    }
+  interface ItemObj {
+    cat?: string;
+    euro?: number;
+    item?: string;
   }
-});
+
+  export default Vue.extend({
+    components: {
+      CustomButton,
+      ErrorInline,
+    },
+
+    data() {
+      return {
+        item: {
+          cat: "" as string,
+          euro: 0.0 as number,
+          item: "" as string,
+        } as ItemObj,
+        showAdd: false as boolean,
+        showAlert: false as boolean,
+      };
+    },
+    methods: {
+      addItem() {
+        if (!this.item.cat || !this.item.euro || !this.item.item) {
+          this.showAlert = true;
+          return;
+        } else {
+          this.showAlert = false;
+        }
+
+        const db = firebase.firestore();
+
+        const collection = db.collection("spese");
+
+        collection.add({
+          category: this.item.cat,
+          euro: this.item.euro,
+          item: this.item.item,
+          data: firebase.firestore.Timestamp.fromDate(new Date()),
+        });
+
+        this.showAdd = false;
+      },
+    },
+  });
 </script>
