@@ -16,6 +16,16 @@ export default new Vuex.Store({
     getTotalOutputs: (state) => {
       const outcome: any = { tot: 0 };
       for (const expence of state.expenceList) {
+        /*
+
+export class Listing {
+[key: string]: any
+itemId!: string
+id: string
+url: string 
+
+*/
+
         // Ts caos... ask Erik....
         if (!outcome[expence["category"]]) {
           outcome[expence["category"]] = 0.0;

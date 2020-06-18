@@ -18,9 +18,9 @@
         <label class="pt-3 text-left" for="euro">euro</label>
         <input
           class="py-2 px-3 shadow"
-          type="text"
+          type="number"
           name="euro"
-          v-model="item.euro"
+          v-model.number="item.euro"
         />
         <label class="pt-3 text-left" for="item">item</label>
         <input
